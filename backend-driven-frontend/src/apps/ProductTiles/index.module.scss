@@ -1,0 +1,12 @@
+@import '@/styles/mixins';
+
+.header {
+  margin-bottom: 18px;
+}
+
+.productList {
+  display: grid;
+  grid-template-columns: repeat(4, 236px);
+  column-gap: 16px;
+  row-gap: 24px;
+}

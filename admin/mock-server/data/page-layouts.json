@@ -1,0 +1,338 @@
+{
+  "page_layouts": [
+    {
+      "page_id": 1,
+      "layout_id": "header-content-footer",
+      "layout": {
+        "id": "header-content-footer",
+        "name": "Шапка-Контент-Подвал",
+        "description": "Классическая раскладка с шапкой, основным контентом и подвалом",
+        "zones": [
+          {
+            "id": "header",
+            "name": "Шапка",
+            "type": "row",
+            "height": 80,
+            "components": [
+              {
+                "id": "header-text",
+                "component_id": "text-block",
+                "component": {
+                  "id": "text-block",
+                  "name": "Текстовый блок",
+                  "type": "content",
+                  "config": {
+                    "editable": true,
+                    "max_length": 1000,
+                    "description": "Блок для размещения текстового контента"
+                  },
+                  "fields": [
+                    {
+                      "name": "text",
+                      "type": "TextField",
+                      "required": true,
+                      "help_text": "Основной текст блока"
+                    },
+                    {
+                      "name": "alignment",
+                      "type": "CharField",
+                      "required": false,
+                      "choices": [
+                        {"value": "left", "label": "По левому краю"},
+                        {"value": "center", "label": "По центру"},
+                        {"value": "right", "label": "По правому краю"}
+                      ],
+                      "default_value": "left"
+                    }
+                  ]
+                },
+                "config": {
+                  "text": "Добро пожаловать на наш сайт!",
+                  "alignment": "center"
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "main-content",
+            "name": "Основной контент",
+            "type": "column",
+            "width": 100,
+            "components": [
+              {
+                "id": "welcome-text",
+                "component_id": "text-block",
+                "component": {
+                  "id": "text-block",
+                  "name": "Текстовый блок",
+                  "type": "content",
+                  "config": {
+                    "editable": true,
+                    "max_length": 1000,
+                    "description": "Блок для размещения текстового контента"
+                  },
+                  "fields": [
+                    {
+                      "name": "text",
+                      "type": "TextField",
+                      "required": true,
+                      "help_text": "Основной текст блока"
+                    },
+                    {
+                      "name": "alignment",
+                      "type": "CharField",
+                      "required": false,
+                      "choices": [
+                        {"value": "left", "label": "По левому краю"},
+                        {"value": "center", "label": "По центру"},
+                        {"value": "right", "label": "По правому краю"}
+                      ],
+                      "default_value": "left"
+                    }
+                  ]
+                },
+                "config": {
+                  "text": "Это главная страница нашего сайта. Здесь вы можете найти всю необходимую информацию о нашей компании, услугах и контактах.",
+                  "alignment": "center"
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              },
+              {
+                "id": "main-gallery",
+                "component_id": "image-gallery",
+                "component": {
+                  "id": "image-gallery",
+                  "name": "Галерея изображений",
+                  "type": "media",
+                  "config": {
+                    "max_images": 10,
+                    "allowed_formats": ["jpg", "png", "webp"],
+                    "description": "Компонент для отображения галереи изображений"
+                  },
+                  "fields": [
+                    {
+                      "name": "images",
+                      "type": "ManyToManyField",
+                      "required": true,
+                      "help_text": "Выберите изображения для галереи"
+                    },
+                    {
+                      "name": "show_captions",
+                      "type": "BooleanField",
+                      "required": false,
+                      "default_value": false,
+                      "help_text": "Показывать подписи к изображениям"
+                    }
+                  ]
+                },
+                "config": {
+                  "images": [
+                    {
+                      "url": "https://via.placeholder.com/400x300/007bff/ffffff?text=Изображение+1",
+                      "alt": "Изображение 1",
+                      "caption": "Пример изображения 1"
+                    },
+                    {
+                      "url": "https://via.placeholder.com/400x300/28a745/ffffff?text=Изображение+2",
+                      "alt": "Изображение 2",
+                      "caption": "Пример изображения 2"
+                    },
+                    {
+                      "url": "https://via.placeholder.com/400x300/dc3545/ffffff?text=Изображение+3",
+                      "alt": "Изображение 3",
+                      "caption": "Пример изображения 3"
+                    }
+                  ],
+                  "show_captions": true
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "footer",
+            "name": "Подвал",
+            "type": "row",
+            "height": 60,
+            "components": [
+              {
+                "id": "footer-form",
+                "component_id": "contact-form",
+                "component": {
+                  "id": "contact-form",
+                  "name": "Форма обратной связи",
+                  "type": "form",
+                  "config": {
+                    "email_notifications": true,
+                    "save_to_database": true,
+                    "description": "Форма для сбора обратной связи от пользователей"
+                  },
+                  "fields": [
+                    {
+                      "name": "form_title",
+                      "type": "CharField",
+                      "required": true,
+                      "max_length": 100,
+                      "help_text": "Заголовок формы"
+                    },
+                    {
+                      "name": "email_recipient",
+                      "type": "CharField",
+                      "required": true,
+                      "help_text": "Email для получения сообщений"
+                    },
+                    {
+                      "name": "success_message",
+                      "type": "TextField",
+                      "required": false,
+                      "default_value": "Спасибо! Ваше сообщение отправлено.",
+                      "help_text": "Сообщение об успешной отправке"
+                    }
+                  ]
+                },
+                "config": {
+                  "form_title": "Свяжитесь с нами",
+                  "email_recipient": "info@example.com",
+                  "success_message": "Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время."
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "created_at": "2024-01-15T11:30:00Z",
+        "updated_at": "2024-01-15T11:30:00Z"
+      },
+      "custom_zones": [],
+      "created_at": "2024-01-15T11:30:00Z",
+      "updated_at": "2024-01-15T11:30:00Z"
+    },
+    {
+      "page_id": 5,
+      "layout_id": "three-column",
+      "layout": {
+        "id": "three-column",
+        "name": "Трехколоночная раскладка",
+        "description": "Раскладка с тремя равными колонками",
+        "zones": [
+          {
+            "id": "left-column",
+            "name": "Левая колонка",
+            "type": "column",
+            "width": 33.33,
+            "components": []
+          },
+          {
+            "id": "center-column",
+            "name": "Центральная колонка",
+            "type": "column",
+            "width": 33.33,
+            "components": []
+          },
+          {
+            "id": "right-column",
+            "name": "Правая колонка",
+            "type": "column",
+            "width": 33.34,
+            "components": []
+          }
+        ],
+        "created_at": "2024-01-15T11:00:00Z",
+        "updated_at": "2024-01-15T11:00:00Z"
+      },
+      "custom_zones": [],
+      "created_at": "2024-01-15T11:00:00Z",
+      "updated_at": "2024-01-15T11:00:00Z"
+    },
+    {
+      "page_id": 6,
+      "layout_id": "single-column",
+      "layout": {
+        "id": "single-column",
+        "name": "Одноколоночная раскладка",
+        "description": "Простая раскладка с одной колонкой для основного контента",
+        "zones": [
+          {
+            "id": "main-content",
+            "name": "Основной контент",
+            "type": "column",
+            "width": 100,
+            "components": []
+          }
+        ],
+        "created_at": "2024-01-15T10:00:00Z",
+        "updated_at": "2024-01-15T10:00:00Z"
+      },
+      "custom_zones": [],
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "page_id": 7,
+      "layout_id": "single-column",
+      "layout": {
+        "id": "single-column",
+        "name": "Одноколоночная раскладка",
+        "description": "Простая раскладка с одной колонкой для основного контента",
+        "zones": [
+          {
+            "id": "main-content",
+            "name": "Основной контент",
+            "type": "column",
+            "width": 100,
+            "components": []
+          }
+        ],
+        "created_at": "2024-01-15T10:00:00Z",
+        "updated_at": "2024-01-15T10:00:00Z"
+      },
+      "custom_zones": [],
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "page_id": 8,
+      "layout_id": "single-column",
+      "layout": {
+        "id": "single-column",
+        "name": "Одноколоночная раскладка",
+        "description": "Простая раскладка с одной колонкой для основного контента",
+        "zones": [
+          {
+            "id": "main-content",
+            "name": "Основной контент",
+            "type": "column",
+            "width": 100,
+            "components": []
+          }
+        ],
+        "created_at": "2024-01-15T10:00:00Z",
+        "updated_at": "2024-01-15T10:00:00Z"
+      },
+      "custom_zones": [],
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    }
+  ]
+}

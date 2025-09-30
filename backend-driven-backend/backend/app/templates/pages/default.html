@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{object.title}}</h1>
+<div>
+    {{object.content|safe}}
+</div>
+{% for item in components %}
+    {{ item.object.html|safe }}
+{% endfor %}
+{% endblock %}

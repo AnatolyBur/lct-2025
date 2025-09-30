@@ -1,0 +1,46 @@
+{% load garpix_menu %}
+
+<div class="c-catalog">
+  <div class="c-catalog__bar">
+    <button class="c-catalog__btn" type="button">
+      {{ object.button_title }}
+    </button>
+
+    {# вытаскиваем меню по коду #}
+    {% get_menu object.menu_code request as menu_items %}
+
+    <ul class="c-catalog__list" style="--cols: {{ object.columns }};">
+      {% for i in menu_items %}
+        <li class="c-catalog__item">
+          <a class="c-catalog__link" href="{{ i.url|default:'#' }}">
+            {% if object.show_icons and i.image %}
+              <img class="c-catalog__icon" src="{{ i.image.url }}" alt="">
+            {% endif %}
+            <span>{{ i.title }}</span>
+          </a>
+
+          {# подменю до max_depth #}
+          {% if i.children and object.max_depth|add:'0' > 1 %}
+            <div class="c-catalog__dropdown">
+              <ul class="c-catalog__sub">
+                {% for c1 in i.children %}
+                  <li>
+                    <a href="{{ c1.url|default:'#' }}">{{ c1.title }}</a>
+
+                    {% if c1.children and object.max_depth|add:'0' > 2 %}
+                      <ul class="c-catalog__sub2">
+                        {% for c2 in c1.children %}
+                          <li><a href="{{ c2.url|default:'#' }}">{{ c2.title }}</a></li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

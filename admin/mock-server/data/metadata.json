@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "model_name": "BasePage",
+    "app_label": "garpix_page",
+    "fields": [
+      {
+        "name": "title",
+        "type": "CharField",
+        "max_length": 255,
+        "required": true,
+        "help_text": "Заголовок страницы"
+      },
+      {
+        "name": "slug",
+        "type": "SlugField",
+        "max_length": 255,
+        "required": true,
+        "help_text": "URL-адрес страницы (генерируется автоматически из заголовка)"
+      },
+      {
+        "name": "content",
+        "type": "TextField",
+        "required": false,
+        "help_text": "Основное содержимое страницы"
+      },
+      {
+        "name": "is_published",
+        "type": "BooleanField",
+        "required": false,
+        "default_value": false,
+        "help_text": "Опубликовать страницу"
+      },
+      {
+        "name": "meta_title",
+        "type": "CharField",
+        "max_length": 255,
+        "required": false,
+        "help_text": "SEO заголовок (если не указан, используется обычный заголовок)"
+      },
+      {
+        "name": "meta_description",
+        "type": "TextField",
+        "required": false,
+        "help_text": "SEO описание страницы"
+      },
+      {
+        "name": "meta_keywords",
+        "type": "CharField",
+        "max_length": 500,
+        "required": false,
+        "help_text": "SEO ключевые слова (через запятую)"
+      },
+      {
+        "name": "template",
+        "type": "CharField",
+        "max_length": 100,
+        "required": false,
+        "choices": [
+          {"value": "default", "label": "Стандартный шаблон"},
+          {"value": "landing", "label": "Лендинг"},
+          {"value": "blog", "label": "Блог"},
+          {"value": "portfolio", "label": "Портфолио"}
+        ],
+        "default_value": "default",
+        "help_text": "Шаблон для отображения страницы"
+      },
+      {
+        "name": "sort_order",
+        "type": "CharField",
+        "max_length": 10,
+        "required": false,
+        "default_value": "0",
+        "help_text": "Порядок сортировки страницы"
+      }
+    ]
+  }
+}

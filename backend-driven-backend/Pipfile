@@ -1,0 +1,34 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "==4.2"
+environs = "*"
+psycopg2-binary = ">=2.9.3"
+coverage = "*"
+twine = "*"
+m2r = "*"
+django-polymorphic-tree-for-garpix-page = "==2.2.2"
+django-modeltranslation = "*"
+django-multiurl = "*"
+djangorestframework = "*"
+garpix-package = "*"
+model-bakery = "*"
+django-redis = "*"
+django-rest-polymorphic = "*"
+eqator = ">=2.2.1"
+garpix-admin-lock = "==1.3.2"
+celery = "*"
+django-tabbed-admin-for-garpixcms = "==1.1.1"
+garpix-utils = "==1.11.0"
+django-multiurl-for-garpix-page = "*"
+django-cors-headers = "*"
+garpix-menu = "*"
+pillow = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"

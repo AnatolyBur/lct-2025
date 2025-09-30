@@ -1,0 +1,25 @@
+<div class="c-services c-services--cols-{{ object.columns }}{% if object.compact %} c-services--compact{% endif %}">
+  {% if object.title %}
+    <h3 class="c-services__title">{{ object.title }}</h3>
+  {% endif %}
+
+  <ul class="c-services__grid">
+    {% for it in object.items.all|slice:":{{ object.max_items }}" %}
+      <li class="c-services__item">
+        <a class="c-services__link" href="{{ it.url }}" {% if it.is_external %}target="_blank" rel="noopener"{% endif %}>
+          <span class="c-services__icon">
+            {% if it.icon %}<img src="{{ it.icon.url }}" alt="">{% else %}■{% endif %}
+          </span>
+          <span class="c-services__text">
+            <span class="c-services__name">
+              {{ it.title }}
+            </span>
+            {% if not object.compact and it.description %}
+              <span class="c-services__desc">{{ it.description }}</span>
+            {% endif %}
+          </span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

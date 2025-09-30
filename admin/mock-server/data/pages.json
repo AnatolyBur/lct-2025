@@ -1,0 +1,51 @@
+{
+  "pages": [
+    {
+      "id": 1,
+      "title": "Главная страница",
+      "slug": "home",
+      "content": "Добро пожаловать на наш сайт!",
+      "is_published": true,
+      "created_at": "2024-01-15T10:30:00Z",
+      "updated_at": "2024-01-15T10:30:00Z",
+      "meta_title": "Главная страница сайта",
+      "meta_description": "Описание главной страницы для SEO",
+      "layout_id": "header-content-footer"
+    },
+    {
+      "id": 2,
+      "title": "О компании",
+      "slug": "about",
+      "content": "Мы - команда профессионалов, работающих в сфере веб-разработки.",
+      "is_published": true,
+      "created_at": "2024-01-16T14:20:00Z",
+      "updated_at": "2024-01-16T14:20:00Z",
+      "meta_title": "О нашей компании",
+      "meta_description": "Узнайте больше о нашей компании и команде"
+    },
+    {
+      "id": 3,
+      "title": "Контакты",
+      "slug": "contacts",
+      "content": "Свяжитесь с нами любым удобным способом.",
+      "is_published": false,
+      "created_at": "2024-01-17T09:15:00Z",
+      "updated_at": "2024-01-17T09:15:00Z",
+      "meta_title": "Контакты",
+      "meta_description": "Как с нами связаться",
+      "phone": "+79999999999",
+      "email": "test@test.com",
+      "address": "г. Москва, ул. Ленина, 1",
+      "map_link": "https://www.google.com/maps?q=г. Москва, ул. Ленина, 1"
+    },
+    {
+      "title": "Тестовая страница",
+      "slug": "test",
+      "content": "Содержимое тестовой страницы",
+      "is_published": false,
+      "id": 4,
+      "created_at": "2025-09-19T12:12:56.326Z",
+      "updated_at": "2025-09-19T12:12:56.326Z"
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+@import '@/styles/mixins.scss';
+
+.upside {
+  @include text-regular;
+  color: var(--f-color-light-1);
+  background-color: var(--c-background-dark-1);
+  padding: 8px 0;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1316px;
+    margin: 0 auto;
+  }
+}
+
+.upsideLeft {
+  display: flex;
+  align-items: center;
+}
+
+.upsideLeftNav {
+  &__text {
+    @include text-regular;
+    color: var(--f-color-light-1)
+  }
+
+  &__list {
+    display: flex;
+  }
+}
+
+.upsideRight {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  &__authBtn {
+    @include text-regular;
+    color: var(--f-color-light-1);
+  }
+
+  &__advertBtn {
+    @include text-regular;
+    color: var(--f-color-light-1);
+    background-color: var(--f-color-blue-1);
+    padding: 8px 12px;
+    border-radius: 8px;
+  }
+}
+
+.upsideRightNav {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  &__fav,
+  &__cart {
+    width: 24px;
+    height: 24px;
+
+    & svg {
+      fill: var(--f-color-dark-2);
+    }
+  }
+}
+
+.downside {
+  padding: 16px 0;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 110px 162px 1fr max-content;
+    max-width: 1316px;
+    margin: 0 auto;
+    column-gap: 24px;
+  }
+
+  &__logoLink {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.categoriesContainer {
+  position: relative;
+}
+
+.downsideCategoriesBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--f-color-blue-1);
+  padding: 10px 8px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+
+  &:hover {
+    background-color: #0077cc;
+    transform: translateY(-1px);
+  }
+
+  &_active {
+    background-color: #0077cc;
+  }
+
+  & svg {
+    fill: var(--f-color-light-1);
+    margin-right: 8px;
+  }
+
+  &__text {
+    @include text-regular;
+    color: var(--f-color-light-1);
+    margin-right: 4px;
+  }
+
+  &__arrow {
+    stroke: var(--f-color-light-1);
+    transition: transform 0.2s ease;
+
+    &_open {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.categoriesDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--c-background-light-1);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border: 1px solid #e5e5e5;
+  z-index: 1000;
+  min-width: 800px;
+  max-width: 1000px;
+  margin-top: 8px;
+  animation: slideDown 0.2s ease-out;
+  overflow: hidden;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+
+.categoryItem {
+  padding: 16px;
+  border-right: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
+
+  &:nth-child(odd) {
+    border-right: 1px solid #f0f0f0;
+  }
+
+  &:nth-child(even) {
+    border-right: none;
+  }
+
+  &:hover {
+    background-color: #f8f9fa;
+  }
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.categoryIcon {
+  font-size: 20px;
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.categoryName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.subcategoriesList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.subcategoryItem {
+  margin-bottom: 4px;
+}
+
+.subcategoryLink {
+  display: block;
+  padding: 6px 0;
+  font-size: 14px;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  border-radius: 4px;
+
+  &:hover {
+    color: var(--f-color-blue-1);
+    background-color: #f0f8ff;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-left: -8px;
+    margin-right: -8px;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.downsideSearch {
+  display: grid;
+  grid-template-columns: 1fr 90px;
+  border: 2px solid var(--f-color-blue-1);
+  border-radius: 12px;
+  background-color: var(--f-color-blue-1);
+
+  &__input {
+    border-radius: 12px 0 0 12px;
+  }
+
+  &__submit {
+    @include text-regular;
+    color: var(--f-color-light-1);
+  }
+}
+
+.downsideAddress {
+  & svg {
+    margin-right: 8px;
+    margin-top: 3px;
+  }
+}

@@ -1,0 +1,47 @@
+<div class="c-fav {% if object.mode == 'list' %}c-fav--list{% else %}c-fav--teaser{% endif %}">
+  <div class="c-fav__head">
+    {% if object.title %}<h3 class="c-fav__title">{{ object.title }}</h3>{% endif %}
+    {% if object.subtitle %}<p class="c-fav__subtitle">{{ object.subtitle }}</p>{% endif %}
+  </div>
+
+  {% if object.mode == 'teaser' %}
+    <div class="c-fav__teaser">
+      <p>Сохраняйте понравившиеся объявления и следите за ценой.</p>
+      {% if object.teaser_text %}
+        <a class="c-fav__btn" href="{{ object.teaser_url }}">{{ object.teaser_text }}</a>
+      {% endif %}
+    </div>
+  {% else %}
+    <ul class="c-fav__grid" style="--cols: {{ object.columns }};">
+      {% for it in object.items.all|slice:":{{ object.limit }}" %}
+        <li class="c-fav__item">
+          <a class="c-fav__card" href="{{ it.url }}">
+            <div class="c-fav__media">
+              {% if it.image %}
+                <img src="{{ it.image.url }}" alt="">
+              {% else %}
+                <div class="c-fav__placeholder">Нет фото</div>
+              {% endif %}
+            </div>
+            <div class="c-fav__content">
+              <div class="c-fav__name">{{ it.title }}</div>
+              <div class="c-fav__meta">
+                {% if it.price_value %}
+                  <span class="c-fav__price">{{ it.price_value|floatformat:0 }} {{ it.price_currency }}</span>
+                {% endif %}
+                {% if it.address %}<span class="c-fav__addr">{{ it.address }}</span>{% endif %}
+              </div>
+            </div>
+          </a>
+        </li>
+      {% empty %}
+        <li class="c-fav__empty">Пока пусто. Добавляйте объявления в избранное.</li>
+      {% endfor %}
+    </ul>
+    {% if object.teaser_text %}
+      <div class="c-fav__more">
+        <a class="c-fav__btn" href="{{ object.teaser_url }}">{{ object.teaser_text }}</a>
+      </div>
+    {% endif %}
+  {% endif %}
+</div>

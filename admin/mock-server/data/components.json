@@ -1,0 +1,90 @@
+{
+  "components": [
+    {
+      "id": "text-block",
+      "name": "Текстовый блок",
+      "type": "content",
+      "config": {
+        "editable": true,
+        "max_length": 1000,
+        "description": "Блок для размещения текстового контента"
+      },
+      "fields": [
+        {
+          "name": "text",
+          "type": "TextField",
+          "required": true,
+          "help_text": "Основной текст блока"
+        },
+        {
+          "name": "alignment",
+          "type": "CharField",
+          "required": false,
+          "choices": [
+            {"value": "left", "label": "По левому краю"},
+            {"value": "center", "label": "По центру"},
+            {"value": "right", "label": "По правому краю"}
+          ],
+          "default_value": "left"
+        }
+      ]
+    },
+    {
+      "id": "image-gallery",
+      "name": "Галерея изображений",
+      "type": "media",
+      "config": {
+        "max_images": 10,
+        "allowed_formats": ["jpg", "png", "webp"],
+        "description": "Компонент для отображения галереи изображений"
+      },
+      "fields": [
+        {
+          "name": "images",
+          "type": "ManyToManyField",
+          "required": true,
+          "help_text": "Выберите изображения для галереи"
+        },
+        {
+          "name": "show_captions",
+          "type": "BooleanField",
+          "required": false,
+          "default_value": false,
+          "help_text": "Показывать подписи к изображениям"
+        }
+      ]
+    },
+    {
+      "id": "contact-form",
+      "name": "Форма обратной связи",
+      "type": "form",
+      "config": {
+        "email_notifications": true,
+        "save_to_database": true,
+        "description": "Форма для сбора обратной связи от пользователей"
+      },
+      "fields": [
+        {
+          "name": "form_title",
+          "type": "CharField",
+          "required": true,
+          "max_length": 100,
+          "help_text": "Заголовок формы"
+        },
+        {
+          "name": "email_recipient",
+          "type": "CharField",
+          "required": true,
+          "help_text": "Email для получения сообщений"
+        },
+        {
+          "name": "success_message",
+          "type": "TextField",
+          "required": false,
+          "default_value": "Спасибо! Ваше сообщение отправлено.",
+          "help_text": "Сообщение об успешной отправке"
+        }
+      ]
+    }
+  ]
+}

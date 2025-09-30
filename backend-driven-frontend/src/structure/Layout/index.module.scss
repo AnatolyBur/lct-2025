@@ -1,0 +1,15 @@
+@import '@/styles/test.scss';
+
+.template {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: max-content auto max-content;
+  row-gap: 20px;
+}
+
+.container {
+  @include test;
+  padding: 0 60px;
+  max-width: 100vw;
+  overflow-x: hidden;
+}

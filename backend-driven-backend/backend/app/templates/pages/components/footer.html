@@ -1,0 +1,31 @@
+<footer class="c-footer">
+  <div class="c-footer__top">
+    {% for g in object.groups.all %}
+      <div class="c-footer__group">
+        <h4 class="c-footer__group-title">{{ g.title }}</h4>
+        <ul class="c-footer__links">
+          {% for l in g.links.all %}
+            <li>
+              <a href="{{ l.url }}"
+                 {% if l.is_external %}target="_blank" rel="noopener"{% endif %}>
+                {{ l.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="c-footer__bottom">
+    <span class="c-footer__copy">{{ object.copyright_text }}</span>
+
+    {% if object.show_socials %}
+      <div class="c-footer__socials">
+        {# сюда можно вставить иконки соцсетей или подключить отдельный список #}
+        <a href="#" aria-label="Telegram">TG</a>
+        <a href="#" aria-label="VK">VK</a>
+      </div>
+    {% endif %}
+  </div>
+</footer>

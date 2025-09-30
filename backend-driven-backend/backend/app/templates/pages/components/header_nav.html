@@ -1,0 +1,17 @@
+{% load static %}
+<header class="c-header">
+  <div class="c-header__logo">
+    {% if object.logo %}<img src="{{ object.logo.url }}" alt="logo">{% endif %}
+  </div>
+
+  <form class="c-header__search" action="/search/">
+    <input type="text" name="q" placeholder="{{ object.search_placeholder }}">
+    <button type="submit">Найти</button>
+  </form>
+
+  <nav class="c-header__actions">
+    {% if object.show_favorites %}<a href="/favorites/" aria-label="Избранное">★</a>{% endif %}
+    {% if object.show_profile %}<a href="/profile/" aria-label="Профиль">☺</a>{% endif %}
+    <a class="c-header__post" href="{{ object.post_button_url }}">{{ object.post_button_text }}</a>
+  </nav>
+</header>

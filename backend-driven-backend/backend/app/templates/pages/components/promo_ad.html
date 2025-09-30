@@ -1,0 +1,40 @@
+{# Универсальный рекламный блок #}
+<div class="c-ad {% if object.full_width %}c-ad--full{% endif %}"
+     style="{% if object.background %}background: {{ object.background }};{% endif %} padding: {{ object.padding_y }}px 0; margin: {{ object.margin_y }}px 0;">
+
+  {% if object.mode == 'html' %}
+    {# Встраиваемый HTML. Убедись, что CSP/безопасность позволяют это. #}
+    <div class="c-ad__html">
+      {{ object.html|safe }}
+    </div>
+
+  {% else %}
+    {# Баннер-картинка со ссылкой #}
+    {% if object.link_url %}
+      <a class="c-ad__link"
+         href="{{ object.link_url }}"
+         {% if object.is_external %}target="_blank"{% endif %}
+         {% if object.rel_noopener %}rel="noopener nofollow"{% endif %}
+         aria-label="{{ object.aria_label }}">
+    {% else %}
+      <div class="c-ad__link" aria-label="{{ object.aria_label }}">
+    {% endif %}
+
+      <picture class="c-ad__picture">
+        {% if object.image_mobile %}
+          <source media="(max-width: 767px)" srcset="{{ object.image_mobile.url }}">
+        {% endif %}
+        {% if object.image %}
+          <img class="c-ad__img" src="{{ object.image.url }}" alt="">
+        {% else %}
+          <div class="c-ad__placeholder">Рекламный баннер</div>
+        {% endif %}
+      </picture>
+
+    {% if object.link_url %}
+      </a>
+    {% else %}
+      </div>
+    {% endif %}
+  {% endif %}
+</div>

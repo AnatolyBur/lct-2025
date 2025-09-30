@@ -1,0 +1,21 @@
+<aside class="c-biz{% if not object.show_on_mobile %} c-biz--desktop-only{% endif %}">
+  {% if object.title %}
+    <h3 class="c-biz__title">{{ object.title }}</h3>
+  {% endif %}
+
+  <ul class="c-biz__list">
+    {% for it in object.items.all|slice:":{{ object.max_items }}" %}
+      <li class="c-biz__item">
+        <a class="c-biz__link" href="{{ it.url }}" {% if it.is_external %}target="_blank" rel="noopener"{% endif %}>
+          <span class="c-biz__icon">
+            {% if it.icon %}<img src="{{ it.icon.url }}" alt="">{% else %}■{% endif %}
+          </span>
+          <span class="c-biz__content">
+            <span class="c-biz__name">{{ it.title }}</span>
+            {% if it.description %}<span class="c-biz__desc">{{ it.description }}</span>{% endif %}
+          </span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</aside>

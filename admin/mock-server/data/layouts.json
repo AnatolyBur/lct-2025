@@ -1,0 +1,281 @@
+{
+  "layouts": [
+    {
+      "id": "single-column",
+      "name": "Одноколоночная раскладка",
+      "description": "Простая раскладка с одной колонкой для основного контента",
+      "zones": [
+        {
+          "id": "main-content",
+          "name": "Основной контент",
+          "type": "column",
+          "width": 100,
+          "components": []
+        }
+      ],
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "two-column",
+      "name": "Двухколоночная раскладка",
+      "description": "Раскладка с основной колонкой и боковой панелью",
+      "zones": [
+        {
+          "id": "main-content",
+          "name": "Основной контент",
+          "type": "column",
+          "width": 70,
+          "components": []
+        },
+        {
+          "id": "sidebar",
+          "name": "Боковая панель",
+          "type": "column",
+          "width": 30,
+          "components": []
+        }
+      ],
+      "created_at": "2024-01-15T10:30:00Z",
+      "updated_at": "2024-01-15T10:30:00Z"
+    },
+    {
+      "id": "three-column",
+      "name": "Трехколоночная раскладка",
+      "description": "Раскладка с тремя равными колонками",
+      "zones": [
+        {
+          "id": "left-column",
+          "name": "Левая колонка",
+          "type": "column",
+          "width": 33.33,
+          "components": []
+        },
+        {
+          "id": "center-column",
+          "name": "Центральная колонка",
+          "type": "column",
+          "width": 33.33,
+          "components": []
+        },
+        {
+          "id": "right-column",
+          "name": "Правая колонка",
+          "type": "column",
+          "width": 33.34,
+          "components": []
+        }
+      ],
+      "created_at": "2024-01-15T11:00:00Z",
+      "updated_at": "2024-01-15T11:00:00Z"
+    },
+    {
+      "id": "header-content-footer",
+      "name": "Шапка-Контент-Подвал",
+      "description": "Классическая раскладка с шапкой, основным контентом и подвалом",
+      "zones": [
+        {
+          "id": "header",
+          "name": "Шапка",
+          "type": "row",
+          "height": 80,
+          "components": [
+            {
+              "id": "header-text",
+              "component_id": "text-block",
+              "component": {
+                "id": "text-block",
+                "name": "Текстовый блок",
+                "type": "content",
+                "config": {
+                  "editable": true,
+                  "max_length": 1000,
+                  "description": "Блок для размещения текстового контента"
+                },
+                "fields": [
+                  {
+                    "name": "text",
+                    "type": "TextField",
+                    "required": true,
+                    "help_text": "Основной текст блока"
+                  },
+                  {
+                    "name": "alignment",
+                    "type": "CharField",
+                    "required": false,
+                    "choices": [
+                      {"value": "left", "label": "По левому краю"},
+                      {"value": "center", "label": "По центру"},
+                      {"value": "right", "label": "По правому краю"}
+                    ],
+                    "default_value": "left"
+                  }
+                ]
+              },
+              "config": {},
+              "position": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              }
+            }
+          ]
+        },
+        {
+          "id": "main-content",
+          "name": "Основной контент",
+          "type": "column",
+          "width": 100,
+          "components": [
+            {
+              "id": "welcome-text",
+              "component_id": "text-block",
+              "component": {
+                "id": "text-block",
+                "name": "Текстовый блок",
+                "type": "content",
+                "config": {
+                  "editable": true,
+                  "max_length": 1000,
+                  "description": "Блок для размещения текстового контента"
+                },
+                "fields": [
+                  {
+                    "name": "text",
+                    "type": "TextField",
+                    "required": true,
+                    "help_text": "Основной текст блока"
+                  },
+                  {
+                    "name": "alignment",
+                    "type": "CharField",
+                    "required": false,
+                    "choices": [
+                      {"value": "left", "label": "По левому краю"},
+                      {"value": "center", "label": "По центру"},
+                      {"value": "right", "label": "По правому краю"}
+                    ],
+                    "default_value": "left"
+                  }
+                ]
+              },
+              "config": {},
+              "position": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              }
+            },
+            {
+              "id": "main-gallery",
+              "component_id": "image-gallery",
+              "component": {
+                "id": "image-gallery",
+                "name": "Галерея изображений",
+                "type": "media",
+                "config": {
+                  "max_images": 10,
+                  "allowed_formats": ["jpg", "png", "webp"],
+                  "description": "Компонент для отображения галереи изображений"
+                },
+                "fields": [
+                  {
+                    "name": "images",
+                    "type": "ManyToManyField",
+                    "required": true,
+                    "help_text": "Выберите изображения для галереи"
+                  },
+                  {
+                    "name": "show_captions",
+                    "type": "BooleanField",
+                    "required": false,
+                    "default_value": false,
+                    "help_text": "Показывать подписи к изображениям"
+                  }
+                ]
+              },
+              "config": {},
+              "position": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              }
+            }
+          ]
+        },
+        {
+          "id": "footer",
+          "name": "Подвал",
+          "type": "row",
+          "height": 60,
+          "components": [
+            {
+              "id": "footer-form",
+              "component_id": "contact-form",
+              "component": {
+                "id": "contact-form",
+                "name": "Форма обратной связи",
+                "type": "form",
+                "config": {
+                  "email_notifications": true,
+                  "save_to_database": true,
+                  "description": "Форма для сбора обратной связи от пользователей"
+                },
+                "fields": [
+                  {
+                    "name": "form_title",
+                    "type": "CharField",
+                    "required": true,
+                    "max_length": 100,
+                    "help_text": "Заголовок формы"
+                  },
+                  {
+                    "name": "email_recipient",
+                    "type": "CharField",
+                    "required": true,
+                    "help_text": "Email для получения сообщений"
+                  },
+                  {
+                    "name": "success_message",
+                    "type": "TextField",
+                    "required": false,
+                    "default_value": "Спасибо! Ваше сообщение отправлено.",
+                    "help_text": "Сообщение об успешной отправке"
+                  }
+                ]
+              },
+              "config": {},
+              "position": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              }
+            }
+          ]
+        }
+      ],
+      "created_at": "2024-01-15T11:30:00Z",
+      "updated_at": "2024-01-15T11:30:00Z"
+    },
+    {
+      "id": "grid-layout",
+      "name": "Сетка",
+      "description": "Гибкая раскладка на основе CSS Grid",
+      "zones": [
+        {
+          "id": "grid-container",
+          "name": "Контейнер сетки",
+          "type": "grid",
+          "grid_template": "repeat(3, 1fr) / repeat(3, 1fr)",
+          "components": []
+        }
+      ],
+      "created_at": "2024-01-15T12:00:00Z",
+      "updated_at": "2024-01-15T12:00:00Z"
+    }
+  ]
+}

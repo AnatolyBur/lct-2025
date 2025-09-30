@@ -1,0 +1,20 @@
+<div class="c-hero c-hero--{{ object.align }}" style="min-height: {{ object.height }}vh;">
+  <div class="c-hero__bg">
+    {% if object.image %}
+      <picture>
+        {% if object.image_mobile %}
+          <source media="(max-width: 767px)" srcset="{{ object.image_mobile.url }}">
+        {% endif %}
+        <img src="{{ object.image.url }}" alt="">
+      </picture>
+    {% endif %}
+  </div>
+
+  <div class="c-hero__inner {% if object.dark_text %}c-hero__inner--dark{% endif %}">
+    {% if object.title %}<h1 class="c-hero__title">{{ object.title }}</h1>{% endif %}
+    {% if object.subtitle %}<p class="c-hero__subtitle">{{ object.subtitle }}</p>{% endif %}
+    {% if object.cta_text %}
+      <a class="c-hero__btn" href="{{ object.cta_url }}">{{ object.cta_text }}</a>
+    {% endif %}
+  </div>
+</div>

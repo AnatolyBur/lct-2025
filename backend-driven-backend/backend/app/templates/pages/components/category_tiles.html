@@ -1,0 +1,18 @@
+<div class="c-tiles" style="--cols: {{ object.columns }};">
+  {% if object.title %}
+    <h2 class="c-tiles__title">{{ object.title }}</h2>
+  {% endif %}
+
+  <ul class="c-tiles__grid">
+    {% for it in object.items.all %}
+      <li class="c-tiles__item">
+        <a class="c-tiles__link" href="{{ it.url }}">
+          <span class="c-tiles__icon">
+            {% if it.icon %}<img src="{{ it.icon.url }}" alt="">{% else %}■{% endif %}
+          </span>
+          <span class="c-tiles__text">{{ it.title }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

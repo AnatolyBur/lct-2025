@@ -1,0 +1,32 @@
+<div class="c-reco" style="--cols: {{ object.columns }};">
+  <div class="c-reco__head">
+    {% if object.title %}<h2 class="c-reco__title">{{ object.title }}</h2>{% endif %}
+    {% if object.subtitle %}<p class="c-reco__subtitle">{{ object.subtitle }}</p>{% endif %}
+  </div>
+
+  <ul class="c-reco__grid">
+    {% for it in object.items.all|slice:":{{ object.limit }}" %}
+      <li class="c-reco__item">
+        <a class="c-reco__card" href="{{ it.url }}">
+          <div class="c-reco__media">
+            {% if it.image %}
+              <img src="{{ it.image.url }}" alt="">
+            {% else %}
+              <div class="c-reco__placeholder">Нет фото</div>
+            {% endif %}
+            {% if it.is_favorite %}<span class="c-reco__fav" aria-label="Избранное">★</span>{% endif %}
+          </div>
+          <div class="c-reco__content">
+            <div class="c-reco__title-line">{{ it.title }}</div>
+            <div class="c-reco__meta">
+              {% if it.price_value %}
+                <span class="c-reco__price">{{ it.price_value|floatformat:0 }} {{ it.price_currency }}</span>
+              {% endif %}
+              {% if it.address %}<span class="c-reco__addr">{{ it.address }}</span>{% endif %}
+            </div>
+          </div>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
